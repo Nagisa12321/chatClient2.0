@@ -7,8 +7,8 @@ import java.net.Socket;
 public class Client {
 
     private Message theMessage;
-    private String hostname;
-    private String port;
+    private final String hostname;
+    private final String port;
     private Socket theSocket = null;
     private String myID;
     private theObjectStream theStream;
@@ -27,7 +27,7 @@ public class Client {
         return theSocket;
     }
 
-    public void openSocket() throws Exception, IOException {
+    public void openSocket() throws Exception {
         theSocket = new Socket(hostname, Integer.parseInt(port));
     }
 
@@ -36,7 +36,7 @@ public class Client {
     }
 
     public void Send(String Message) throws IOException {
-        this.theMessage = new Message();
+        theMessage = new Message();
         theMessage.groupSend(Message, myID);
         ObjectOutputStream out = theStream.getObjectOutputStream();
         out.writeObject(theMessage);
@@ -53,7 +53,7 @@ public class Client {
     }
 
     public void P2PSend(String Message, String theID) throws IOException{
-        this.theMessage = new Message();
+        theMessage = new Message();
         theMessage.p2pSend(myID, theID, Message);
 		ObjectOutputStream out = theStream.getObjectOutputStream();
 		out.writeObject(theMessage);

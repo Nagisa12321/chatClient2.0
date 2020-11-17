@@ -1,8 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Swingtest:jar">
+  <artifact name="Swingtest:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Swingtest_jar</output-path>
-    <root id="archive" name="Swingtest.jar">
-      <element id="module-output" name="ChatClient" />
+    <root id="root">
+      <element id="archive" name="Swingtest.jar">
+        <element id="module-output" name="Swingtest" />
+        <element id="module-test-output" name="Swingtest" />
+      </element>
     </root>
   </artifact>
 </component>
