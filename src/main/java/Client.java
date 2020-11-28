@@ -23,10 +23,6 @@ public class Client {
         return theStream;
     }
 
-    public Socket getSocket() {
-        return theSocket;
-    }
-
     public void openSocket() throws Exception {
         theSocket = new Socket(hostname, Integer.parseInt(port));
     }

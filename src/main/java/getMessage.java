@@ -1,21 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.ObjectInputStream;
-
-import java.util.Arrays;
 import java.util.Queue;
 
 public class getMessage implements Runnable {
+    @SuppressWarnings("rawtypes")
     private final JList theList;
     private final JTextArea theText;
+    private final JTextArea theText1;
     private final ObjectInputStream in;
+    private final String MyID;
 
-    public getMessage(JTextArea theText, theObjectStream theObjectStream, JList theList) {
+    @SuppressWarnings("rawtypes")
+    public getMessage(JTextArea theText,JTextArea theText1, theObjectStream theObjectStream, JList theList, String MyID) {
         this.theList = theList;
         this.theText = theText;
         in = theObjectStream.getObjectInputStream();
+        this.MyID = MyID;
+        this.theText1 = theText1;
     }
 
+    @SuppressWarnings({"InfiniteLoopStatement", "unchecked"})
     public void run() {
         try {
             while (true) {
@@ -32,15 +37,17 @@ public class getMessage implements Runnable {
                     theText.append(message);
                     theText.setCaretPosition(theText.getText().length());
                 } else if (type == 1) {
-                    Toolkit.getDefaultToolkit().beep();
-                    Runnable a = () -> {
-                    Object[] options = {"恩恩！", "好的"};
-                    JOptionPane.showOptionDialog(null, message, "SOMEONE TO TELL YOU",
-                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                    };
-                    new Thread(a).start();
-                    theText.append(message);
-                    theText.setCaretPosition(theText.getText().length());
+                    if (!theMessage.getTheFromUser().equals(MyID)) {
+                        Toolkit.getDefaultToolkit().beep();
+                        Runnable a = () -> {
+                            Object[] options = {"恩恩！", "好的"};
+                            JOptionPane.showOptionDialog(null, message, "SOMEONE TO TELL YOU",
+                                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        };
+                        new Thread(a).start();
+                    }
+                    theText1.append(message);
+                    theText1.setCaretPosition(theText1.getText().length());
                 }
             }
 

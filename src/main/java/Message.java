@@ -23,6 +23,7 @@ public class Message implements Serializable,Cloneable {
         this.theClientCount = -1;
     }
 
+    @SuppressWarnings("CollectionAddAllCanBeReplacedWithConstructor")
     @Override
     public Message clone() throws CloneNotSupportedException {
         Message tmp = (Message) super.clone();
@@ -107,6 +108,7 @@ public class Message implements Serializable,Cloneable {
      * @param theClientMap   用户表
      * @param theClientCount 用户数
      */
+    @SuppressWarnings("unused")
     public void syncSend(String theMessage, Queue<String> theClientMap, int theClientCount) {
         this.theType = 2;
         this.theMessage = theMessage;
@@ -120,6 +122,7 @@ public class Message implements Serializable,Cloneable {
     /**
      * @return Object具体信息
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     public String toString() {
         String a = "Object内容如下: \ntheType : " + getTheType() +

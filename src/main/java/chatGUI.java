@@ -1,10 +1,9 @@
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.Objects;
 
+@SuppressWarnings("rawtypes")
 public class chatGUI extends JDialog {
     private JPanel contentPane;
     private JTextField text_Message;
@@ -43,7 +42,8 @@ public class chatGUI extends JDialog {
                     theClient.openSocket();
                     theClient.SendId(text_ID.getText());
                     text.append("\t\tConnect succeeded!!!!!!!!!!!!!!!\n");
-                    Runnable theThread = new getMessage(text, theClient.getTheStream(), list1);
+                    Runnable theThread = new getMessage(text, textArea1, theClient.getTheStream(),
+                            list1, text_ID.getText());
                     Thread theThread2 = new Thread(theThread);
                     theThread2.start();
                     btnConnect.setEnabled(false);
@@ -108,12 +108,7 @@ public class chatGUI extends JDialog {
                 }
             }
         });
-        list1.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                textToUser.setText((String) list1.getSelectedValue());
-            }
-        });
+        list1.addListSelectionListener(e -> textToUser.setText((String) list1.getSelectedValue()));
     }
 
     public static void main(String[] args) {
