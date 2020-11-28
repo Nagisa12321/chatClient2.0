@@ -17,19 +17,22 @@ public class chatGUI extends JDialog {
     private JButton btnSend;
     private JTextField textToUser;
     private JList list1;
+    private JTextArea textArea1;
     private Client theClient;
 
 
     public chatGUI() {
         textToUser.setEditable(false);
         text.setEditable(false);
+        textArea1.setEditable(false);
         btnDisconnect.setEnabled(false);
         btnConnect.setEnabled(true);
         btnSend.setEnabled(false);
         text_port.setText("23333");
-        text_ID.setText("Trump");
-        text_IP.setText("cc_pc");
+        text_ID.setText("theTestGuy");
+        text_IP.setText("localhost");
         text.setLineWrap(true);
+        textArea1.setLineWrap(true);
         setContentPane(contentPane);
         setModal(true);
 
