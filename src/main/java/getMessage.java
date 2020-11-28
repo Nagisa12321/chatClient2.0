@@ -40,7 +40,7 @@ public class getMessage implements Runnable {
                     if (!theMessage.getTheFromUser().equals(MyID)) {
                         Toolkit.getDefaultToolkit().beep();
                         Runnable a = () -> {
-                            Object[] options = {"æ©æ©ï¼", "å¥½çš„"};
+                            Object[] options = {"¶÷¶÷£¡", "ºÃµÄ"};
                             JOptionPane.showOptionDialog(null, message, "SOMEONE TO TELL YOU",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                         };
@@ -52,7 +52,7 @@ public class getMessage implements Runnable {
             }
 
         } catch (Exception e) {
-            theText.append("\t\tå·²ç»å’ŒæœåŠ¡å™¨æ–­å¼€é“¾æ¥\n");
+            theText.append("\t\tÒÑ¾­ºÍ·şÎñÆ÷¶Ï¿ªÁ´½Ó\n");
         }
     }
 

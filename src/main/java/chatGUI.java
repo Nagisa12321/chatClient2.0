@@ -1,6 +1,11 @@
+
+import com.formdev.flatlaf.*;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 
 @SuppressWarnings("rawtypes")
@@ -21,6 +26,7 @@ public class chatGUI extends JDialog {
 
 
     public chatGUI() {
+
         textToUser.setEditable(false);
         text.setEditable(false);
         textArea1.setEditable(false);
@@ -112,9 +118,16 @@ public class chatGUI extends JDialog {
     }
 
     public static void main(String[] args) {
+
+        FlatLightLaf.install();
+        JFrame frame = new JFrame("QQ");
         chatGUI dialog = new chatGUI();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+        frame.setContentPane(dialog.contentPane);
+        URL imgURL = chatGUI.class.getResource("./QQicon.png");
+        ImageIcon QQIcon = new ImageIcon(imgURL);
+        frame.setIconImage(QQIcon.getImage());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 }
